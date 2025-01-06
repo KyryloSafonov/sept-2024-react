@@ -1,0 +1,13 @@
+.idea/
+.DS_Store/
+
+node_modules/
+
+dist/
+.github/
+README.md
+docker-compose.yaml
+.dockerignore
+Dockerfile
+
+tsconfig.tsbuildinfo

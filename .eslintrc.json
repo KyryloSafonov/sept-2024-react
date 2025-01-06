@@ -1,0 +1,389 @@
+{
+    "extends": [
+        "airbnb-base",
+        "airbnb/rules/react",
+        "plugin:@typescript-eslint/recommended",
+        "airbnb-typescript/lib/shared",
+        "plugin:react/recommended",
+        "plugin:promise/recommended",
+        "prettier"
+    ],
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["import", "react", "@typescript-eslint", "only-warn", "simple-import-sort"],
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "jest": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "generators": true,
+            "jsx": true
+        },
+        "ecmaVersion": 2020,
+        "project": "./tsconfig.json",
+        "sourceType": "module",
+        "warnOnUnsupportedTypeScriptVersion": false
+    },
+    "rules": {
+        "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+        "react/jsx-no-useless-fragment": "off",
+        "simple-import-sort/imports": [
+            "error",
+            {
+                "groups": [
+                    [
+                        // Packages. `react` related packages come first.
+                        "^react",
+                        // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
+                        "^@?\\w"
+                    ],
+                    [
+                        // Absolute imports and Relative imports.
+                        "^(api|app_constants|assets|components|context|hooks|pages|routes|layouts|types|utils)(/.*|$)",
+                        // Parent imports. Put `..` last.
+                        "^\\.\\.(?!/?$)",
+                        "^\\.\\./?$",
+                        // Other relative imports. Put same-folder imports and `.` last.
+                        "^\\./(?=.*/)(?!/?$)",
+                        "^\\.(?!/?$)",
+                        "^\\./?$",
+                        "^\\."
+                    ],
+                    // for css and assets imports
+                    ["^.+\\.svg$", "^.+\\.s?css$", "^[^.]"]
+                ]
+            }
+        ],
+        "simple-import-sort/exports": "error",
+        "react/button-has-type": "off",
+        "react/function-component-definition": [
+            2,
+            { "namedComponents": ["arrow-function", "function-declaration"] }
+        ],
+        "array-callback-return": "warn",
+        "block-spacing": "warn",
+        "default-case": [
+            "warn",
+            {
+                "commentPattern": "^no default$"
+            }
+        ],
+        "dot-location": ["warn", "property"],
+        "eqeqeq": ["warn", "allow-null"],
+        "new-parens": "warn",
+        "no-array-constructor": "warn",
+        "no-caller": "warn",
+        "no-case-declarations": "warn",
+        "no-cond-assign": ["warn", "always"],
+        "no-console": [
+            "warn",
+            {
+                "allow": ["info", "warn", "error"]
+            }
+        ],
+        "no-const-assign": "warn",
+        "no-constant-condition": [
+            "warn",
+            {
+                "checkLoops": false
+            }
+        ],
+        "no-control-regex": "warn",
+        "no-delete-var": "warn",
+        "no-dupe-args": "warn",
+        "no-dupe-class-members": "warn",
+        "no-dupe-keys": "warn",
+        "no-duplicate-case": "warn",
+        "no-empty": [
+            "warn",
+            {
+                "allowEmptyCatch": true
+            }
+        ],
+        "no-empty-character-class": "warn",
+        "no-empty-pattern": "warn",
+        "no-eval": "warn",
+        "no-ex-assign": "warn",
+        "no-extend-native": "warn",
+        "no-extra-bind": "warn",
+        "no-extra-boolean-cast": "warn",
+        "no-extra-label": "warn",
+        "no-fallthrough": "warn",
+        "no-func-assign": "warn",
+        "no-implied-eval": "warn",
+        "no-invalid-regexp": "warn",
+        "no-iterator": "warn",
+        "no-label-var": "warn",
+        "no-labels": [
+            "warn",
+            {
+                "allowLoop": true,
+                "allowSwitch": false
+            }
+        ],
+        "no-lone-blocks": "warn",
+        "no-loop-func": "warn",
+        "no-mixed-operators": [
+            "warn",
+            {
+                "allowSamePrecedence": false,
+                "groups": [
+                    ["&", "|", "^", "~", "<<", ">>", ">>>"],
+                    ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+                    ["&&", "||"],
+                    ["in", "instanceof"]
+                ]
+            }
+        ],
+        "no-multi-str": "warn",
+        "no-native-reassign": "warn",
+        "no-negated-in-lhs": "warn",
+        "no-new-func": "warn",
+        "no-new-object": "warn",
+        "no-new-symbol": "warn",
+        "no-new-wrappers": "warn",
+        "no-obj-calls": "warn",
+        "no-octal": "warn",
+        "no-octal-escape": "warn",
+        "no-regex-spaces": "warn",
+        "no-restricted-globals": "off",
+        "no-restricted-properties": [
+            "warn",
+            {
+                "message": "Please use import() instead. More info: https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#code-splitting",
+                "object": "require",
+                "property": "ensure"
+            },
+            {
+                "message": "Please use import() instead. More info: https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#code-splitting",
+                "object": "System",
+                "property": "import"
+            }
+        ],
+        "no-restricted-syntax": ["warn", "WithStatement"],
+        "no-script-url": "warn",
+        "no-self-assign": "warn",
+        "no-self-compare": "warn",
+        "no-sequences": "warn",
+        "no-shadow-restricted-names": "warn",
+        "no-sparse-arrays": "warn",
+        "no-template-curly-in-string": "warn",
+        "no-this-before-super": "warn",
+        "no-throw-literal": "warn",
+        "no-undef": "off",
+        "no-unexpected-multiline": "warn",
+        "no-unreachable": "warn",
+        "no-unused-expressions": [
+            "warn",
+            {
+                "allowShortCircuit": true,
+                "allowTaggedTemplates": true,
+                "allowTernary": true
+            }
+        ],
+        "no-unused-labels": "warn",
+        "no-unused-vars": [
+            "warn",
+            {
+                "args": "none",
+                "ignoreRestSiblings": true,
+                "varsIgnorePattern": "\\b[A-Z][a-z]*([A-Z][a-z]*)*\\b"
+            }
+        ],
+        "no-useless-computed-key": "off",
+        "no-useless-concat": "warn",
+        "no-useless-constructor": "warn",
+        "no-useless-escape": "warn",
+        "no-useless-rename": [
+            "warn",
+            {
+                "ignoreDestructuring": false,
+                "ignoreExport": false,
+                "ignoreImport": false
+            }
+        ],
+        "no-whitespace-before-property": "warn",
+        "no-with": "warn",
+        "no-restricted-exports": ["warn", { "restrictedNamedExports": [] }],
+        "padding-line-between-statements": [
+            "warn",
+            {
+                "blankLine": "always",
+                "prev": "*",
+                "next": "return"
+            },
+            {
+                "blankLine": "always",
+                "prev": ["const", "let", "var"],
+                "next": "*"
+            },
+            {
+                "blankLine": "always",
+                "next": ["if"],
+                "prev": ["*"]
+            },
+            {
+                "blankLine": "always",
+                "next": ["*"],
+                "prev": ["if"]
+            },
+            {
+                "blankLine": "any",
+                "next": ["const", "let", "var", "expression"],
+                "prev": ["const", "let", "var"]
+            },
+            {
+                "blankLine": "always",
+                "prev": "multiline-block-like",
+                "next": "*"
+            },
+            {
+                "blankLine": "always",
+                "prev": ["class", "function", "block"],
+                "next": "*"
+            }
+        ],
+        "radix": "warn",
+        "require-yield": "warn",
+        "rest-spread-spacing": ["warn", "never"],
+        "strict": ["warn", "never"],
+        "unicode-bom": ["warn", "never"],
+        "use-isnan": "warn",
+        "valid-typeof": "warn",
+        "no-prototype-builtins": "off",
+        "no-return-assign": ["warn", "except-parens"],
+        "arrow-body-style": "off",
+        "consistent-return": "off",
+        "import/no-cycle": "off",
+        "import/first": "warn",
+        "import/no-amd": "warn",
+        "import/no-webpack-loader-syntax": "warn",
+        "import/no-extraneous-dependencies": "off",
+        "import/prefer-default-export": "off",
+        "import/order": "off",
+        "import/no-named-as-default": "off",
+        "import/extensions": "off",
+        "react/jsx-filename-extension": [
+            "error",
+            {
+                "extensions": [".jsx", ".tsx"]
+            }
+        ],
+        "react/forbid-foreign-prop-types": [
+            "warn",
+            {
+                "allowInPropTypes": true
+            }
+        ],
+        "react/jsx-key": "warn",
+        "react/jsx-no-comment-textnodes": "warn",
+        "react/jsx-no-duplicate-props": [
+            "warn",
+            {
+                "ignoreCase": true
+            }
+        ],
+        "react/jsx-no-undef": "warn",
+        "react/jsx-pascal-case": [
+            "warn",
+            {
+                "allowAllCaps": true,
+                "ignore": []
+            }
+        ],
+        "react/jsx-uses-react": "warn",
+        "react/jsx-uses-vars": "warn",
+        "react/no-access-state-in-setstate": "warn",
+        "react/no-deprecated": "warn",
+        "react/no-did-mount-set-state": "warn",
+        "react/no-direct-mutation-state": "warn",
+        "react/no-is-mounted": "warn",
+        "react/no-string-refs": "warn",
+        "react/react-in-jsx-scope": "off",
+        "react/require-render-return": "warn",
+        "react/destructuring-assignment": "off",
+        "react/no-array-index-key": "off",
+        "react/style-prop-object": "warn",
+        "react/prop-types": "off",
+        "react/jsx-fragments": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-boolean-value": ["warn", "always"],
+        "react/static-property-placement": "off",
+        "react/state-in-constructor": "off",
+        "react/require-default-props": "off",
+        "@typescript-eslint/naming-convention": [
+            "warn",
+            {
+                "format": ["PascalCase"],
+                "selector": ["class", "interface", "typeAlias"]
+            }
+        ],
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": [
+            "warn",
+            {
+                "functions": false,
+                "classes": true,
+                "variables": false,
+                "typedefs": false
+            }
+        ],
+        "no-redeclare": "off",
+        "@typescript-eslint/no-redeclare": [
+            "warn",
+            {
+                "ignoreDeclarationMerge": true
+            }
+        ],
+        "@typescript-eslint/ban-ts-comment": [
+            "warn",
+            {
+                "ts-ignore": "allow-with-description",
+                "minimumDescriptionLength": 10
+            }
+        ],
+        "@typescript-eslint/no-inferrable-types": [
+            "warn",
+            {
+                "ignoreParameters": true,
+                "ignoreProperties": true
+            }
+        ],
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/ban-types": [
+            "warn",
+            {
+                "extendDefaults": false,
+                "types": {
+                    "Number": {
+                        "message": "Use number instead",
+                        "fixWith": "number"
+                    },
+                    "String": {
+                        "message": "Use string instead",
+                        "fixWith": "string"
+                    },
+                    "Boolean": {
+                        "message": "Use boolean instead",
+                        "fixWith": "boolean"
+                    },
+                    "Symbol": {
+                        "message": "Use symbol instead",
+                        "fixWith": "symbol"
+                    },
+                    "Object": {
+                        "message": "The `Object` type actually means \"any non-nullish value\", so it is marginally better than `unknown`.\n- If you want a type meaning \"any object\", you probably want `Record<string, unknown>` instead.\n- If you want a type meaning \"any value\", you probably want `unknown` instead."
+                    }
+                }
+            }
+        ],
+        "promise/always-return": "off"
+    }
+}

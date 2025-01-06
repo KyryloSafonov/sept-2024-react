@@ -1,0 +1,23 @@
+.idea/
+.DS_Store/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+node_modules/
+dist/
+
+tsconfig.tsbuildinfo
+
+.env.local
+.env.*.local
+
+public/
+.eslintrc.json
+*.config.js
+*.config.cjs
+yarn.lock
+yarn-error.lock
+.github/
