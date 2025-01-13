@@ -1,13 +1,14 @@
 import React, { Dispatch, FC, SetStateAction } from 'react';
 
 import { useUserCardsList } from 'components/user-cards-list/useUserCardsList';
+import { generatePath, Link } from 'react-router-dom';
+import { AppRoutes } from 'routes/constants';
 
 interface Props {
     listLength: number;
-    setCurrentUser: Dispatch<SetStateAction<any | null>>;
 }
 
-export const UserCardsList: FC<Props> = ({ listLength, setCurrentUser }) => {
+export const UserCardsList: FC<Props> = ({ listLength }) => {
     const { users, loading } = useUserCardsList({ listLength });
 
     if (!users && loading) return <div>loading</div>;
@@ -21,7 +22,9 @@ export const UserCardsList: FC<Props> = ({ listLength, setCurrentUser }) => {
                     <div>
                         {item.id} --- {item.name}
                     </div>
-                    <button onClick={() => setCurrentUser(item)}>Get Current User</button>
+                    <Link to={generatePath(AppRoutes.user, { userId: item.id })} relative="route">
+                        <button>Get Current User</button>
+                    </Link>
                 </div>
             ))}
         </div>
