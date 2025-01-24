@@ -1,0 +1,18 @@
+.user-card-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  &.current-user {
+    background: pink;
+  }
+
+  .title {
+    font-size: 20px;
+    color: red;
+
+    .email {
+      color: yellow;
+    }
+  }
+}

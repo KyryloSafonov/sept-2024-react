@@ -1,35 +1,55 @@
-import React, { Dispatch, FC, SetStateAction } from 'react';
+import React, { FC, memo,useMemo } from 'react';
+import { generatePath, Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 import { useUserCardsList } from 'components/user-cards-list/useUserCardsList';
-import { generatePath, Link } from 'react-router-dom';
 import { AppRoutes } from 'routes/constants';
+
+import './styles.scss';
 
 interface Props {
     listLength: number;
+    id: number | null;
 }
 
-export const UserCardsList: FC<Props> = ({ listLength }) => {
+export const UserCardsList: FC<Props> = memo(({ listLength, id }) => {
     const { users, loading } = useUserCardsList({ listLength });
+
+    const getUser = (userId: number | null) => {
+        if (!id || !users || !users.length) return;
+
+        return users.find((user) => user.id === userId);
+    };
+
+    const currentUser = useMemo(() => getUser(id), [id]);
 
     if (!users && loading) return <div>loading</div>;
 
     if (!users) return <div>Data not found</div>;
 
+    console.log(currentUser);
+
     return (
         <div>
-            {users.map((item) => (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }} key={item.id}>
-                    <div>
-                        {item.id} --- {item.name}
+            {users.map((item) => {
+                return (
+                    <div
+                        className={classNames('user-card-item', { 'current-user': item.id === 6 })}
+                        key={item.id}
+                    >
+                        <div className="title">
+                            {item.id} --- {item.name}
+                            <div className="email">{item.email}</div>
+                        </div>
+                        <Link
+                            to={generatePath(AppRoutes.user, { userId: item.id })}
+                            relative="route"
+                        >
+                            <button>Get Current User</button>
+                        </Link>
                     </div>
-                    <Link to={generatePath(AppRoutes.user, { userId: item.id })} relative="route">
-                        <button>Get Current User</button>
-                    </Link>
-                </div>
-            ))}
+                );
+            })}
         </div>
     );
-};
-
-// маю питання по утілках, дайте пару варіантів як приклади для розуміння що таке ці утілки, я в утілку
-// запхав функцію яка приймає аргументом урл а в собі містить фетчовий запит. і потім в api юзаю її
+});

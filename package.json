@@ -13,6 +13,7 @@
         "typescript": "^5.7.2"
     },
     "dependencies": {
+        "classnames": "^2.5.1",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-router-dom": "^7.1.1"
@@ -37,6 +38,7 @@
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "globals": "^15.14.0",
         "prettier": "3.4.2",
+        "sass-embedded": "^1.83.4",
         "typescript": "^5.7.2",
         "vite": "^6.0.5",
         "vite-plugin-checker": "^0.8.0",
